@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ volts }}% Battery volts</title>
+        <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Prevent scrollbars */
+        }
+        #video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover; /* Ensure the video covers the whole area */
+        }
+    </style>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+</head>
+<body>
+    <h1>DarkBot Control Interface</h1>
+    <video id="video" autoplay></video>
+ <img id="video" src="/video_feed" alt="Video Feed">
+    <script>
+        // Establish a Socket.IO connection
+        const socket = io();
+
+        socket.on('connect', function() {
+            console.log('Socket.IO connection established');
+        });
+
+        socket.on('disconnect', function() {
+            console.log('Socket.IO connection closed');
+        });
+
+        socket.on('connect_error', function(error) {
+            console.error('Socket.IO Error: ' + error);
+        });
+
+        // Capture keypresses and send them to the server
+        const keys = Array(19).fill(0); // Array to store key states
+
+        document.addEventListener('keydown', function(event) {
+            switch(event.key) {
+                case 'w': keys[0] = 1; break;
+                case 'a': keys[1] = 1; break;
+                case 's': keys[2] = 1; break;
+                case 'd': keys[3] = 1; break;
+                case 'ArrowUp': keys[4] = 1; break;
+                case 'ArrowDown': keys[5] = 1; break;
+                case 'ArrowLeft': keys[6] = 1; break;
+                case 'ArrowRight': keys[7] = 1; break;
+                case 'e': keys[8] = 1; break;
+                case 'q': keys[9] = 1; break;
+                case '1': keys[10] = 1; break;
+                case '2': keys[11] = 1; break;
+                case '3': keys[12] = 1; break;
+                case '4': keys[13] = 1; break;
+                case '5': keys[14] = 1; break;
+                case '6': keys[15] = 1; break;
+               case '7': keys[16] = 1; break;
+                case '8': keys[17] = 1; break;
+                case '9': keys[18] = 1; break;
+            }
+            socket.emit('key_event', keys.join(','));
+        });
+
+        document.addEventListener('keyup', function(event) {
+            switch(event.key) {
+                case 'w': keys[0] = 0; break;
+                case 'a': keys[1] = 0; break;
+                case 's': keys[2] = 0; break;
+                case 'd': keys[3] = 0; break;
+                case 'ArrowUp': keys[4] = 0; break;
+                case 'ArrowDown': keys[5] = 0; break;
+                case 'ArrowLeft': keys[6] = 0; break;
+                case 'ArrowRight': keys[7] = 0; break;
+                case 'e': keys[8] = 0; break;
+                case 'q': keys[9] = 0; break;
+                case '1': keys[10] = 0; break;
+                case '2': keys[11] = 0; break;
+                case '3': keys[12] = 0; break;
+                case '4': keys[13] = 0; break;
+                case '5': keys[14] = 0; break;
+                case '6': keys[15] = 0; break;
+                case '7': keys[16] = 0; break;
+                case '8': keys[17] = 0; break;
+                case '9': keys[18] = 0; break;
+            }
+            socket.emit('key_event', keys.join(','));
+        });
+
+        // Display the video stream
+        const video = document.getElementById('video');
+        video.src = "/video_feed";
+
+    </script>
+</body>
+</html>
