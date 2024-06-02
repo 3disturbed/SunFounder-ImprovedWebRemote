@@ -1,8 +1,5 @@
 
 ![robot](https://github.com/3disturbed/SunFounder-ImprovedWebRemote/assets/9502162/d33223ab-b864-45be-901a-f65f519c3c3c)
-# SunFounder-ImprovedWebRemote
-Improved web remote for the SunFounder Smart Car Robot
-# Sunfounder Smart Robot Web Remote
 
 Welcome to **Dark Firebeard's Sunfounder Smart Robot Web Remote** project! This repository contains an exciting and more responsive web-based remote control solution for the Sunfounder Smart Robot, utilizing the Sunfounder Robot Hat. Our goal is to provide a user-friendly and efficient interface to control your robot with ease.
 
