@@ -119,6 +119,8 @@ You can run the web remote either as a systemd service (daemon) or manually.
 ## Contributions
 
 We welcome contributions! Feel free to fork this repository and submit pull requests. For major changes, please open an issue first to discuss what you would like to change.
+If you want to support my open-source development
+https://www.patreon.com/Firebeard
 
 ## License
 
